@@ -56,8 +56,8 @@ export const getMonths = (weekDates, weekStartDate, monthsArray) => {
     (day) => day.getMonth() !== weekStartDate.getMonth()
   );
   if (Month) {
-    return `${monthsArray[Month.getMonth()]} - ${
-      monthsArray[weekStartDate.getMonth()]
+    return `${monthsArray[weekStartDate.getMonth()]} - ${
+      monthsArray[Month.getMonth()]
     }`;
   }
   return monthsArray[weekStartDate.getMonth()];

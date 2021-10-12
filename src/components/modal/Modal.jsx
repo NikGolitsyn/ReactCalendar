@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-
+import PropTypes from "prop-types";
 import "./modal.scss";
 
 const Modal = ({ onToggle, onEventCreate }) => {
-  const [userData, setUserData] = useState({
+  const [eventData, setEventData] = useState({
     title: "",
     date: "",
     startTime: "",
@@ -13,7 +13,7 @@ const Modal = ({ onToggle, onEventCreate }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUserData({ ...userData, [name]: value });
+    setEventData({ ...eventData, [name]: value });
   };
 
   return (
@@ -25,14 +25,14 @@ const Modal = ({ onToggle, onEventCreate }) => {
           </button>
           <form
             className="event-form"
-            onSubmit={(e) => onEventCreate(e, userData)}
+            onSubmit={(e) => onEventCreate(e, eventData)}
           >
             <input
               type="text"
               name="title"
               placeholder="Title"
               className="event-form__field"
-              value={userData.title}
+              value={eventData.title}
               onChange={handleChange}
             />
             <div className="event-form__time">
@@ -40,14 +40,14 @@ const Modal = ({ onToggle, onEventCreate }) => {
                 type="date"
                 name="date"
                 className="event-form__field"
-                value={userData.date}
+                value={eventData.date}
                 onChange={handleChange}
               />
               <input
                 type="time"
                 name="startTime"
                 className="event-form__field"
-                value={userData.startTime}
+                value={eventData.startTime}
                 onChange={handleChange}
               />
               <span>-</span>
@@ -55,7 +55,7 @@ const Modal = ({ onToggle, onEventCreate }) => {
                 type="time"
                 name="endTime"
                 className="event-form__field"
-                value={userData.endTime}
+                value={eventData.endTime}
                 onChange={handleChange}
               />
             </div>
@@ -63,10 +63,13 @@ const Modal = ({ onToggle, onEventCreate }) => {
               name="description"
               placeholder="Description"
               className="event-form__field"
-              value={userData.description}
+              value={eventData.description}
               onChange={handleChange}
             ></textarea>
-            <button type="submit" className="event-form__submit-btn">
+            <button
+              type="submit"
+              className="event-form__submit-btn"
+            >
               Create
             </button>
           </form>
@@ -77,3 +80,8 @@ const Modal = ({ onToggle, onEventCreate }) => {
 };
 
 export default Modal;
+
+Modal.propTypes = {
+  onEventCreate: PropTypes.func.isRequired,
+  onToggle: PropTypes.func.isRequired,
+};

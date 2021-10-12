@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import "./sidebar.scss";
 
@@ -10,3 +11,6 @@ const Sidebar = ({ timeHour }) => (
 
 export default Sidebar;
 
+Sidebar.propTypes = {
+  timeHour: PropTypes.number.isRequired,
+};

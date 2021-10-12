@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import { months, getMonths } from "../../utils/dateUtils.js";
 
@@ -35,3 +36,12 @@ const Header = ({
 );
 
 export default Header;
+
+Header.propTypes = {
+  prevWeek: PropTypes.func.isRequired,
+  nextWeek: PropTypes.func.isRequired,
+  currentWeek: PropTypes.func.isRequired,
+  weekDates: PropTypes.array.isRequired,
+  weekStartDate: PropTypes.instanceOf(Date).isRequired,
+  onToggle: PropTypes.func.isRequired,
+};
