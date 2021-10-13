@@ -18,4 +18,10 @@
     flex: 1;
     border-left: 1px solid #eee;
   }
+  
+  &__time-slot {
+    height: 60px;
+    position: relative;
+    border-bottom: 1px solid #eee;
+  }
 }

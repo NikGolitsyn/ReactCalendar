@@ -47,6 +47,8 @@ export const months = [
   "December",
 ];
 
+export const roundMultiple15 = (num) => Math.round(Number(num) / 15) * 15;
+
 export const hours = Array(24)
   .fill()
   .map((val, index) => index);
@@ -62,3 +64,5 @@ export const getMonths = (weekDates, weekStartDate, monthsArray) => {
   }
   return monthsArray[weekStartDate.getMonth()];
 };
+
+

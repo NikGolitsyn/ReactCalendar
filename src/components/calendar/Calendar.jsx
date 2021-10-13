@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import Navigation from "../navigation/Navigation.jsx";
 import Week from "../week/Week.jsx";
 import Sidebar from "../sidebar/Sidebar.jsx";
-// import eventsArray from "../../gateway/events";
 import Modal from "../modal/Modal.jsx";
 import { getEvent, postEvent, fetchDelete } from "../../gateway/gateway.js";
 
@@ -37,9 +36,9 @@ const Calendar = ({ weekDates, modalState, onToggle }) => {
     fetchEvent();
   }, []);
 
-  const createEvent = (e, userData) => {
+  const createEvent = (e, eventData) => {
     e.preventDefault();
-    const { title, date, startTime, endTime, description } = userData;
+    const { title, date, startTime, endTime, description } = eventData;
 
     const newEvent = {
       title,
@@ -56,7 +55,6 @@ const Calendar = ({ weekDates, modalState, onToggle }) => {
   const deleteEvent = (id) => {
     fetchDelete(id).then(() => fetchEvent());
   };
-  console.log(events);
 
   return (
     <>

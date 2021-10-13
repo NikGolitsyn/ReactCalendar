@@ -1,13 +1,24 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./modal.scss";
+import { roundMultiple15, formatMins } from "../../utils/dateUtils.js";
 
 const Modal = ({ onToggle, onEventCreate }) => {
+  const roundedCurrentDate = new Date(
+    new Date().setMinutes(roundMultiple15(new Date().getMinutes()))
+  );
+
   const [eventData, setEventData] = useState({
     title: "",
-    date: "",
-    startTime: "",
-    endTime: "",
+    date: `${new Date().getFullYear()}-${
+      new Date().getMonth() + 1
+    }-${new Date().getDate()}`,
+    startTime: `${roundedCurrentDate.getHours()}:${formatMins(
+      roundedCurrentDate.getMinutes()
+    )}`,
+    endTime: `${new Date(
+      roundedCurrentDate.setHours(roundedCurrentDate.getHours() + 1)
+    ).getHours()}:${formatMins(roundedCurrentDate.getMinutes())}`,
     description: "",
   });
 
@@ -66,10 +77,7 @@ const Modal = ({ onToggle, onEventCreate }) => {
               value={eventData.description}
               onChange={handleChange}
             ></textarea>
-            <button
-              type="submit"
-              className="event-form__submit-btn"
-            >
+            <button type="submit" className="event-form__submit-btn">
               Create
             </button>
           </form>
