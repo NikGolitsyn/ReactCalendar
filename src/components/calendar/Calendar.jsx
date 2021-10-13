@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import Navigation from "../navigation/Navigation.jsx";
-import Week from "../week/Week.jsx";
-import Sidebar from "../sidebar/Sidebar.jsx";
-import Modal from "../modal/Modal.jsx";
-import { getEvent, postEvent, fetchDelete } from "../../gateway/gateway.js";
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import Navigation from '../navigation/Navigation.jsx';
+import Week from '../week/Week.jsx';
+import Sidebar from '../sidebar/Sidebar.jsx';
+import { getEvent, postEvent, fetchDelete } from '../../gateway/gateway.js';
 
-import { days, hours } from "../../utils/dateUtils.js";
+import { days, hours, roundMultiple15 } from '../../utils/dateUtils.js';
 
-import "./calendar.scss";
+import './calendar.scss';
 
 const Calendar = ({ weekDates, modalState, onToggle }) => {
   const [events, setEvents] = useState([]);
@@ -26,8 +25,8 @@ const Calendar = ({ weekDates, modalState, onToggle }) => {
 
   const fetchEvent = () => {
     getEvent()
-      .then((eventsList) => setEvents(eventsList))
-      .catch((error) => {
+      .then(eventsList => setEvents(eventsList))
+      .catch(error => {
         alert(error.message);
       });
   };
@@ -43,27 +42,28 @@ const Calendar = ({ weekDates, modalState, onToggle }) => {
     const newEvent = {
       title,
       description,
-      dateFrom: new Date(`${date} ${startTime}`),
-      dateTo: new Date(`${date} ${endTime}`),
+      dateFrom: new Date(`${date} ${startTime}`).setMinutes(
+        roundMultiple15(new Date(`${date} ${startTime}`).getMinutes()),
+      ),
+      dateTo: new Date(`${date} ${endTime}`).setMinutes(
+        roundMultiple15(new Date(`${date} ${endTime}`).getMinutes()),
+      ),
       id: Math.random(),
     };
 
     postEvent(newEvent).then(() => fetchEvent());
-    onToggle()
+    onToggle();
   };
 
-  const deleteEvent = (id) => {
+  const deleteEvent = id => {
     fetchDelete(id).then(() => fetchEvent());
   };
 
   return (
     <>
-      {modalState && (
-        <Modal on onToggle={onToggle} onEventCreate={createEvent} />
-      )}
       <section className="calendar">
         <header className="calendar__header">
-          {weekDates.map((dayDate) => (
+          {weekDates.map(dayDate => (
             <Navigation
               key={dayDate.getTime()}
               dayName={days[dayDate.getDay()]}
@@ -74,7 +74,7 @@ const Calendar = ({ weekDates, modalState, onToggle }) => {
         <div className="calendar__body">
           <div className="calendar__week-container">
             <div className="calendar__time-scale">
-              {hours.map((hour) => (
+              {hours.map(hour => (
                 <Sidebar key={hour} timeHour={hour} />
               ))}
             </div>
@@ -83,6 +83,9 @@ const Calendar = ({ weekDates, modalState, onToggle }) => {
               weekDates={weekDates}
               events={events}
               deleteEvent={deleteEvent}
+              onToggle={onToggle}
+              modalState={modalState}
+              onEventCreate={createEvent}
             />
           </div>
         </div>

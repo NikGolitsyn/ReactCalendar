@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import Header from "./components/header/Header.jsx";
-import Calendar from "./components/calendar/Calendar.jsx";
-import { getWeekStartDate, generateWeekRange } from "./utils/dateUtils.js";
-import "./common.scss";
+import React, { useState } from 'react';
+import Header from './components/header/Header.jsx';
+import Calendar from './components/calendar/Calendar.jsx';
+import { getWeekStartDate, generateWeekRange } from './utils/dateUtils.js';
+import './common.scss';
 
 const App = () => {
-  const [weekStartDate, setWeekStartDate] = useState(new Date());
+  const [weekStartDate, setWeekStartDate] = useState(getWeekStartDate(new Date()));
   const [modalState, setModalState] = useState(false);
 
   const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
@@ -37,11 +37,7 @@ const App = () => {
         weekDates={weekDates}
         onToggle={createTaskHandler}
       />
-      <Calendar
-        weekDates={weekDates}
-        modalState={modalState}
-        onToggle={createTaskHandler}
-      />
+      <Calendar weekDates={weekDates} modalState={modalState} onToggle={createTaskHandler} />
     </>
   );
 };

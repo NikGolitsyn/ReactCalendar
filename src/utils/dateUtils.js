@@ -1,6 +1,6 @@
-// import moment from "moment";
+import moment from 'moment';
 
-export const getWeekStartDate = (date) => {
+export const getWeekStartDate = date => {
   const dateCopy = new Date(date);
   const dayOfWeek = dateCopy.getDay();
   const difference =
@@ -12,7 +12,7 @@ export const getWeekStartDate = (date) => {
   return new Date(monday.getFullYear(), monday.getMonth(), monday.getDate());
 };
 
-export const generateWeekRange = (startDate) => {
+export const generateWeekRange = startDate => {
   const result = [];
   for (let i = 0; i < 7; i += 1) {
     const base = new Date(startDate);
@@ -22,47 +22,28 @@ export const generateWeekRange = (startDate) => {
 };
 
 export const getDateTime = (date, time) => {
-  const [hours, minutes] = time.split(":");
+  const [hours, minutes] = time.split(':');
   const withHours = new Date(new Date(date).setHours(Number(hours)));
   const withMinutes = new Date(new Date(withHours).setMinutes(Number(minutes)));
   return withMinutes;
 };
 
-export const formatMins = (mins) => (mins < 10 ? `0${mins}` : mins);
+export const formatMins = mins => (mins < 10 ? `0${mins}` : mins);
 
-export const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+export const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-export const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
-export const roundMultiple15 = (num) => Math.round(Number(num) / 15) * 15;
+export const roundMultiple15 = num => Math.round(Number(num) / 15) * 15;
 
 export const hours = Array(24)
   .fill()
   .map((val, index) => index);
 
-export const getMonths = (weekDates, weekStartDate, monthsArray) => {
+export const getMonths = (weekDates, weekStartDate) => {
   const Month = weekDates.find(
-    (day) => day.getMonth() !== weekStartDate.getMonth()
+    day => moment(day).format('MM') !== moment(weekStartDate).format('MM'),
   );
   if (Month) {
-    return `${monthsArray[weekStartDate.getMonth()]} - ${
-      monthsArray[Month.getMonth()]
-    }`;
+    return `${moment(weekStartDate).format('MMM')} - ${moment(Month).format('MMM')}`;
   }
-  return monthsArray[weekStartDate.getMonth()];
+  return moment(weekStartDate).format('MMMM');
 };
-
-

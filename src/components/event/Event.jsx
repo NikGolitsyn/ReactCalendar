@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import "./event.scss";
-import "../../common.scss";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import EventModal from '../eventModal/eventModal';
+import './event.scss';
+import '../../common.scss';
 
 const Event = ({ height, marginTop, title, time, id, deleteEvent }) => {
   const [deleteButton, setDeleteButton] = useState(false);
@@ -11,28 +12,17 @@ const Event = ({ height, marginTop, title, time, id, deleteEvent }) => {
     marginTop,
   };
 
-  const ToggleButton = (event) => {
+  const ToggleButton = event => {
     event.stopPropagation();
     setDeleteButton(!deleteButton);
   };
 
   return (
     <>
-      <div
-        style={eventStyle}
-        className="event"
-        onClick={(event) => ToggleButton(event)}
-      >
+      <div style={eventStyle} className="event" onClick={event => ToggleButton(event)}>
         <div className="event__title">{title}</div>
         <div className="event__time">{time}</div>
-        {deleteButton && (
-          <button
-            className="delete-event-btn popup__content"
-            onClick={() => deleteEvent(id)}
-          >
-            <i className="fas fa-trash-alt"></i> Delete
-          </button>
-        )}
+        {deleteButton && <EventModal deleteEvent={deleteEvent} id={id} />}
       </div>
     </>
   );

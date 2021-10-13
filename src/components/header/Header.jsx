@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { months, getMonths } from "../../utils/dateUtils.js";
+import { getMonths } from "../../utils/dateUtils.js";
 
 import "./header.scss";
 
@@ -29,7 +29,7 @@ const Header = ({
         <i className="fas fa-chevron-right"></i>
       </button>
       <span className="navigation__displayed-month">
-        {getMonths(weekDates, weekStartDate, months)}
+        {getMonths(weekDates, weekStartDate)}
       </span>
     </div>
   </header>
