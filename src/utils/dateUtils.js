@@ -55,3 +55,12 @@ export const getMonths = (weekDates, weekStartDate) => {
   return moment(weekStartDate).format('MMMM YYYY');
 };
 
+export const currentDate = new Date(
+  new Date().setMinutes(roundMultiple15(new Date().getMinutes())),
+);
+
+export const slotData = event => ({
+    timeHourStart: `${formatMins(Number(event.target.dataset.time) - 1)}:00`,
+    timeHourEnd: `${formatMins(Number(event.target.dataset.time))}:00`,
+    timeDay: event.target.parentElement.dataset.day,
+  });

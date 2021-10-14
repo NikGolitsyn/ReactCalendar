@@ -23,7 +23,7 @@ const App = () => {
     setWeekStartDate(new Date());
   };
 
-  const createTaskHandler = () => {
+  const toggleModalState = () => {
     setModalState(!modalState);
   };
 
@@ -35,9 +35,9 @@ const App = () => {
         currentWeek={toCurrentWeekHandler}
         weekStartDate={weekStartDate}
         weekDates={weekDates}
-        onToggle={createTaskHandler}
+        modalStateHandler={toggleModalState}
       />
-      <Calendar weekDates={weekDates} modalState={modalState} onToggle={createTaskHandler} />
+      <Calendar weekDates={weekDates} modalState={modalState} modalStateHandler={toggleModalState} />
     </>
   );
 };

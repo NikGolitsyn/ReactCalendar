@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import { getMonths } from "../../utils/dateUtils.js";
-
 import "./header.scss";
 
 const Header = ({
@@ -11,10 +9,10 @@ const Header = ({
   currentWeek,
   weekStartDate,
   weekDates,
-  onToggle,
+  modalStateHandler,
 }) => (
   <header className="header">
-    <button className="button create-event-btn" onClick={onToggle}>
+    <button className="button create-event-btn" onClick={modalStateHandler}>
       <i className="fas fa-plus create-event-btn__icon"></i>
       Create
     </button>
@@ -43,5 +41,5 @@ Header.propTypes = {
   currentWeek: PropTypes.func.isRequired,
   weekDates: PropTypes.array.isRequired,
   weekStartDate: PropTypes.instanceOf(Date).isRequired,
-  onToggle: PropTypes.func.isRequired,
+  modalStateHandler: PropTypes.func.isRequired,
 };

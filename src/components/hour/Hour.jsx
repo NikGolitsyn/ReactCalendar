@@ -5,7 +5,6 @@ import { formatMins } from "../../utils/dateUtils.js";
 
 const Hour = ({ dataHour, hourEvents, deleteEvent }) => (
   <div className="calendar__time-slot" data-time={dataHour + 1}>
-    {/* if no events in the current hour nothing will render here */}
     {hourEvents.map(({ id, dateFrom, dateTo, title }) => {
       const eventStart = `${new Date(dateFrom).getHours()}:${formatMins(
         new Date(dateFrom).getMinutes()
@@ -17,7 +16,6 @@ const Hour = ({ dataHour, hourEvents, deleteEvent }) => (
       return (
         <Event
           key={id}
-          // calculating event height = duration of event in minutes
           height={
             (new Date(dateTo).getTime() - new Date(dateFrom).getTime()) /
             (1000 * 60)
@@ -27,7 +25,7 @@ const Hour = ({ dataHour, hourEvents, deleteEvent }) => (
           title={title}
           id={id}
           deleteEvent={deleteEvent}
-          startHour={dateFrom}
+          dateFrom={dateFrom}
         />
       );
     })}

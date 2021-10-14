@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import EventModal from '../eventModal/eventModal';
+import EventModal from '../eventModal/EventModal';
 import './event.scss';
 import '../../common.scss';
 
-const Event = ({ height, marginTop, title, time, id, deleteEvent, startHour }) => {
+const Event = ({ height, marginTop, title, time, id, deleteEvent, dateFrom }) => {
   const [deleteButton, setDeleteButton] = useState(false);
-
   const eventStyle = {
     height,
     marginTop,
@@ -18,13 +17,11 @@ const Event = ({ height, marginTop, title, time, id, deleteEvent, startHour }) =
   };
 
   return (
-    <>
-      <div style={eventStyle} className="event" onClick={event => ToggleButton(event)}>
-        <div className="event__title">{title}</div>
-        <div className="event__time">{time}</div>
-        {deleteButton && <EventModal deleteEvent={deleteEvent} id={id} dateFrom={startHour} />}
-      </div>
-    </>
+    <div style={eventStyle} className="event" onClick={event => ToggleButton(event)}>
+      <div className="event__title">{title}</div>
+      <div className="event__time">{time}</div>
+      {deleteButton && <EventModal deleteEvent={deleteEvent} id={id} dateFrom={dateFrom} />}
+    </div>
   );
 };
 
@@ -37,4 +34,5 @@ Event.propTypes = {
   time: PropTypes.string,
   id: PropTypes.string.isRequired,
   deleteEvent: PropTypes.func.isRequired,
+  dateFrom: PropTypes.number.isRequired,
 };

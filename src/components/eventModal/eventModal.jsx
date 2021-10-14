@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './eventmodal.scss';
 import '../../common.scss';
 
@@ -9,3 +10,9 @@ const EventModal = ({ deleteEvent, id, dateFrom }) => (
 );
 
 export default EventModal;
+
+EventModal.propTypes = {
+  deleteEvent: PropTypes.func.isRequired,
+  dateFrom: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+};
