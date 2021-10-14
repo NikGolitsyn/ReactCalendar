@@ -4,7 +4,7 @@ import moment from 'moment';
 import Day from '../day/Day.jsx';
 import RedLine from '../redLine/RedLine.jsx';
 
-const WeekTable = ({ weekDates, timeSlotHandler, events, deleteEvent }) => (
+const WeekColumns = ({ weekDates, timeSlotHandler, events, deleteEvent }) => (
   <div className="calendar__week" onClick={event => timeSlotHandler(event)}>
     {weekDates.map(dayStart => {
       const dayEnd = new Date(dayStart.getTime()).setHours(new Date(dayStart).getHours() + 24);
@@ -26,9 +26,9 @@ const WeekTable = ({ weekDates, timeSlotHandler, events, deleteEvent }) => (
   </div>
 );
 
-export default WeekTable;
+export default WeekColumns;
 
-WeekTable.propTypes = {
+WeekColumns.propTypes = {
   weekDates: PropTypes.array.isRequired,
   events: PropTypes.array.isRequired,
   deleteEvent: PropTypes.func.isRequired,

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Modal from '../modal/Modal.jsx';
 import { slotData } from '../../utils/dateUtils.js';
-import WeekTable from './WeekTable.jsx';
+import WeekColumns from './WeekColumns.jsx';
 import './week.scss';
 
 const Week = ({
@@ -36,7 +36,7 @@ const Week = ({
           timeSlotDate={timeSlotDate}
         />
       )}
-      <WeekTable
+      <WeekColumns
         weekDates={weekDates}
         timeSlotHandler={timeSlotHandler}
         events={events}
