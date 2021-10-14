@@ -27,6 +27,7 @@ const Hour = ({ dataHour, hourEvents, deleteEvent }) => (
           title={title}
           id={id}
           deleteEvent={deleteEvent}
+          startHour={dateFrom}
         />
       );
     })}

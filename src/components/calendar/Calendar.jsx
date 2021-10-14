@@ -4,6 +4,7 @@ import Navigation from '../navigation/Navigation.jsx';
 import Week from '../week/Week.jsx';
 import Sidebar from '../sidebar/Sidebar.jsx';
 import { getEvent, postEvent, fetchDelete } from '../../gateway/gateway.js';
+import { deleteValidation } from '../../validation/validation.js';
 
 import { days, hours, roundMultiple15 } from '../../utils/dateUtils.js';
 
@@ -55,8 +56,10 @@ const Calendar = ({ weekDates, modalState, onToggle }) => {
     onToggle();
   };
 
-  const deleteEvent = id => {
-    fetchDelete(id).then(() => fetchEvent());
+  const deleteEvent = (id, dateFrom) => {
+    if (!deleteValidation(dateFrom)) {
+      fetchDelete(id).then(() => fetchEvent());
+    }
   };
 
   return (

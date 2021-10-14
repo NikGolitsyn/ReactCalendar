@@ -4,7 +4,7 @@ import EventModal from '../eventModal/eventModal';
 import './event.scss';
 import '../../common.scss';
 
-const Event = ({ height, marginTop, title, time, id, deleteEvent }) => {
+const Event = ({ height, marginTop, title, time, id, deleteEvent, startHour }) => {
   const [deleteButton, setDeleteButton] = useState(false);
 
   const eventStyle = {
@@ -22,7 +22,7 @@ const Event = ({ height, marginTop, title, time, id, deleteEvent }) => {
       <div style={eventStyle} className="event" onClick={event => ToggleButton(event)}>
         <div className="event__title">{title}</div>
         <div className="event__time">{time}</div>
-        {deleteButton && <EventModal deleteEvent={deleteEvent} id={id} />}
+        {deleteButton && <EventModal deleteEvent={deleteEvent} id={id} dateFrom={startHour} />}
       </div>
     </>
   );

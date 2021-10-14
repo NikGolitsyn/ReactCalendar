@@ -20,10 +20,10 @@ const Modal = ({ onToggle, onEventCreate, timeSlotDate }) => {
   };
 
   if (timeSlotDate) {
-    const { timeHourStart, timeHourEnd, timeDay, timeMonth } = timeSlotDate;
+    const { timeHourStart, timeHourEnd, timeDay} = timeSlotDate;
     obj = {
       title: '',
-      date: moment(new Date(`2021 ${timeMonth} ${timeDay}`)).format('YYYY-MM-DD'),
+      date: moment(new Date(timeDay)).format('YYYY-MM-DD'),
       startTime: timeHourStart,
       endTime: timeHourEnd,
       description: '',

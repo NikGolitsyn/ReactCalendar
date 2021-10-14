@@ -40,7 +40,7 @@ const Day = ({ dataDay, dayEvents, deleteEvent, currentDay }) => {
 export default Day;
 
 Day.propTypes = {
-  dataDay: PropTypes.number.isRequired,
+  dataDay: PropTypes.string.isRequired,
   dayEvents: PropTypes.array.isRequired,
   deleteEvent: PropTypes.func.isRequired,
   currentDay: PropTypes.bool,

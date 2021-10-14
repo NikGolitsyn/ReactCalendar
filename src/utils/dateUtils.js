@@ -42,8 +42,16 @@ export const getMonths = (weekDates, weekStartDate) => {
   const Month = weekDates.find(
     day => moment(day).format('MM') !== moment(weekStartDate).format('MM'),
   );
-  if (Month) {
-    return `${moment(weekStartDate).format('MMM')} - ${moment(Month).format('MMM')}`;
+  const Year = weekDates.find(
+    day => moment(day).format('YYYY') !== moment(weekStartDate).format('YYYY'),
+  );
+
+  if (Month && !Year) {
+    return `${moment(weekStartDate).format('MMM')} - ${moment(Month).format('MMM YYYY')}`;
   }
-  return moment(weekStartDate).format('MMMM');
+  if (Month && Year) {
+    return `${moment(weekStartDate).format('MMM YYYY')} - ${moment(Month).format('MMM YYYY')}`;
+  }
+  return moment(weekStartDate).format('MMMM YYYY');
 };
+

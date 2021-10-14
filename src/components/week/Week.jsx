@@ -15,10 +15,9 @@ const Week = ({ weekDates, events, deleteEvent, onToggle, modalState, onEventCre
     }
 
     setTimeSlotDate({
-      timeHourStart: `${formatMins(Number(event.target.dataset.time))}:00`,
-      timeHourEnd: `${formatMins(Number(event.target.dataset.time) + 1)}:00`,
+      timeHourStart: `${formatMins(Number(event.target.dataset.time) - 1)}:00`,
+      timeHourEnd: `${formatMins(Number(event.target.dataset.time))}:00`,
       timeDay: event.target.parentElement.dataset.day,
-      timeMonth: document.querySelector('.navigation__displayed-month').textContent,
     });
 
     onToggle();
@@ -47,7 +46,7 @@ const Week = ({ weekDates, events, deleteEvent, onToggle, modalState, onEventCre
             return (
               <Day
                 key={dayStart.getDate()}
-                dataDay={dayStart.getDate()}
+                dataDay={dayStart.toString()}
                 dayEvents={dayEvents}
                 deleteEvent={deleteEvent}
                 currentDay={true}
@@ -58,7 +57,7 @@ const Week = ({ weekDates, events, deleteEvent, onToggle, modalState, onEventCre
           return (
             <Day
               key={dayStart.getDate()}
-              dataDay={dayStart.getDate()}
+              dataDay={dayStart.toString()}
               dayEvents={dayEvents}
               deleteEvent={deleteEvent}
             />
