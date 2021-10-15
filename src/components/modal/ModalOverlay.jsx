@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ModalCreateBtn from './ModalCreateBtn';
-import ModalForm from './ModalForm';
+import ModalCreateBtn from './ModalCreateBtn.jsx';
+import ModalForm from './ModalForm.jsx';
 
 const ModalOverlay = ({ modalStateHandler, createEventHandler, changeEventHandler, eventData }) => (
   <div className="modal overlay">

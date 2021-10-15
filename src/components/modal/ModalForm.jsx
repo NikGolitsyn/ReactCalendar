@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ModalSubmitBtn from './ModalSubmitBtn';
-import InputField from './InputField';
+import ModalSubmitBtn from './ModalSubmitBtn.jsx';
+import InputField from './InputField.jsx';
 
 const ModalForm = ({ createEventHandler, changeEventHandler, eventData }) => {
   const { title, date, description, startTime, endTime } = eventData;

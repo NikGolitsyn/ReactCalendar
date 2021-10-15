@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CalendarTimescale from './CalendarTimescale';
-import Week from '../week/Week';
+import CalendarTimescale from './CalendarTimescale.jsx';
+import Week from '../week/Week.jsx';
 
 const CalendarBody = ({
   weekDates,

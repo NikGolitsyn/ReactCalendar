@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import ModalOverlay from './ModalOverlay';
+import ModalOverlay from './ModalOverlay.jsx';
 import { defaultEventProps } from '../../utils/eventUtils.js';
 import './modal.scss';
 

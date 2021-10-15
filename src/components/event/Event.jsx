@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import EventModal from '../eventModal/EventModal';
+import EventModal from '../eventModal/EventModal.jsx';
 import './event.scss';
 import '../../common.scss';
 
