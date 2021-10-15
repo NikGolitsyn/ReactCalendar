@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -10,6 +11,7 @@ module.exports = (env, argv) => {
     entry: "./src/index.jsx",
     output: {
       filename: "bundle.js",
+      path: require("path").resolve(__dirname, "review_build"),
     },
     module: {
       rules: [
