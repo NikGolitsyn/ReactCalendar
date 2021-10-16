@@ -1,28 +1,35 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-const InputField = ({ type, name, value, changeEventHandler, placeholder }) => (
-  <>
-    {placeholder ? (
-      <input
-        type={type}
-        name={name}
-        placeholder={placeholder}
-        className="event-form__field"
-        value={value}
-        onChange={changeEventHandler}
-      />
-    ) : (
-      <input
-        type={type}
-        name={name}
-        className="event-form__field"
-        value={value}
-        onChange={changeEventHandler}
-      />
-    )}
-  </>
-);
+const InputField = ({ type, name, value, changeEventHandler, placeholder }) => {
+  const style =
+    type === "text"
+      ? "event-form__field event-form__text-field"
+      : "event-form__field event-form__time-field";
+
+  return (
+    <>
+      {placeholder ? (
+        <input
+          type={type}
+          name={name}
+          placeholder={placeholder}
+          className={style}
+          value={value}
+          onChange={changeEventHandler}
+        />
+      ) : (
+        <input
+          type={type}
+          name={name}
+          className={style}
+          value={value}
+          onChange={changeEventHandler}
+        />
+      )}
+    </>
+  );
+};
 
 export default InputField;
 
@@ -35,5 +42,5 @@ InputField.propTypes = {
 };
 
 InputField.defaultProps = {
-  placeholder: '',
+  placeholder: "",
 };

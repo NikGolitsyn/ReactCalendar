@@ -1,12 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import ModalSubmitBtn from './ModalSubmitBtn.jsx';
-import InputField from './InputField.jsx';
+import React from "react";
+import PropTypes from "prop-types";
+import ModalSubmitBtn from "./ModalSubmitBtn.jsx";
+import InputField from "./InputField.jsx";
 
 const ModalForm = ({ createEventHandler, changeEventHandler, eventData }) => {
   const { title, date, description, startTime, endTime } = eventData;
   return (
-    <form className="event-form" onSubmit={e => createEventHandler(e, eventData)}>
+    <form
+      className="event-form"
+      onSubmit={(e) => createEventHandler(e, eventData)}
+    >
       <InputField
         type="text"
         name="title"
@@ -15,7 +18,12 @@ const ModalForm = ({ createEventHandler, changeEventHandler, eventData }) => {
         changeEventHandler={changeEventHandler}
       />
       <div className="event-form__time">
-        <InputField type="date" name="date" value={date} changeEventHandler={changeEventHandler} />
+        <InputField
+          type="date"
+          name="date"
+          value={date}
+          changeEventHandler={changeEventHandler}
+        />
         <InputField
           type="time"
           name="startTime"
@@ -33,7 +41,7 @@ const ModalForm = ({ createEventHandler, changeEventHandler, eventData }) => {
       <textarea
         name="description"
         placeholder="Description"
-        className="event-form__field"
+        className="event-form__field event-form__description"
         value={description}
         onChange={changeEventHandler}
       ></textarea>
