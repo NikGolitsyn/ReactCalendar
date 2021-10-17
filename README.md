@@ -2,6 +2,9 @@
 
 ### [Site link](https://cranky-yalow-126ccb.netlify.app/)
 
+To build project in production mode use command: npm run build
+
+To build project in development mode use command: npm start
 
 ### The tech stack is:
 
