@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Header from './components/header/Header.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
-import { getWeekStartDate, generateWeekRange } from './utils/dateUtils.js';
+import { getWeekStartDate, generateWeekRange, DAYS_IN_WEEK } from './utils/dateUtils.js';
 import './common.scss';
 
 const App = () => {
@@ -12,11 +12,15 @@ const App = () => {
   const currentDate = new Date(weekStartDate).getDate();
 
   const prevWeekHandler = () => {
-    setWeekStartDate(new Date(weekStartDate.setDate(currentDate - 7)));
+    setWeekStartDate(
+      new Date(weekStartDate.setDate(currentDate - DAYS_IN_WEEK))
+    );
   };
 
   const nextWeekHandler = () => {
-    setWeekStartDate(new Date(weekStartDate.setDate(currentDate + 7)));
+    setWeekStartDate(
+      new Date(weekStartDate.setDate(currentDate + DAYS_IN_WEEK))
+    );
   };
 
   const toCurrentWeekHandler = () => {
